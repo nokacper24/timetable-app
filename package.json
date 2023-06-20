@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "dev": "wrangler pages dev -- ng serve",
+    "dev": "wrangler pages dev --d1=DB -- ng serve",
     "build": "ng build",
     "deploy": "ng build && wrangler pages deploy dist/timetable-app"
   },
@@ -26,6 +26,7 @@
     "@angular-devkit/build-angular": "^16.1.0",
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "^16.1.0",
+    "@cloudflare/workers-types": "^4.20230518.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
