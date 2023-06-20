@@ -7,7 +7,7 @@ CREATE TABLE users (
     CONSTRAINT role CHECK (role IN ('user', 'admin'))
 );
 
-DROB TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS sessions;
 CREATE TABLE sessions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     session_secret TEXT NOT NULL UNIQUE,
