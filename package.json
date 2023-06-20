@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "dev": "wrangler pages dev -- ng serve",
+    "build": "ng build",
     "deploy": "ng build && wrangler pages deploy dist/timetable-app"
   },
   "private": true,
