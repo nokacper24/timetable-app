@@ -1,33 +1,8 @@
-import { Hono } from 'hono'
-import { handle } from 'hono/cloudflare-pages'
+interface Env {}
 
-type Context = {
-  Bindings: {
-    DB: D1Database;
-  };
-  Variables: {
-    // user: User;
-  };
+export const onRequest: PagesFunction<Env> = async (context) => {
+  let request_path = context.functionPath.slice(5);
+  const api_url = 'https://timetable-app-api.nokacper24-cfc.workers.dev/';
+  let new_url = api_url + request_path;
+  return await fetch(new_url, context.request);
 };
-
-const app = new Hono<Context>().basePath('/api')
-
-app.get('/hello', (c) => {
-  return c.json({
-    message: 'Hello, Cloudflare Pages!',
-  })
-})
-
-app.get("/users", async (c) => {
-  let user: User = await c.env.DB.prepare(
-    "SELECT * FROM users"
-  ).first();
-  return c.json(user);
-});
-
-interface User {
-  id: number;
-  username: string;
-}
-
-export const onRequest = handle(app)
