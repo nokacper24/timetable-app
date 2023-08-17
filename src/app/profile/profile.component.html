@@ -1,0 +1,22 @@
+<p *ngIf="user">Hey there, {{user.username}}</p>
+<p *ngIf="!user">Hey!</p>
+
+<div *ngIf="!user">
+    <h2>Log in</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmitLogin(f)" novalidate>
+        <input name="username" placeholder="username" ngModel>
+        <input name="password" placeholder="password" type="password" ngModel>
+        <button>Log in</button>
+    </form>
+</div>
+
+<div *ngIf="!user">
+    <h2>Register</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmitRegister(f)" novalidate>
+        <input name="username" placeholder="username" ngModel>
+        <input name="password" placeholder="password" type="password" ngModel>
+        <button>Register</button>
+    </form>
+</div>
+
+<button *ngIf="user" (click)="onLogOut()">logout</button>
